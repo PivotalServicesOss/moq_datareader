@@ -13,6 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Moq.Extensions.DataReader\Moq.Extensions.DataReader.csproj" />
+    <ProjectReference Include="..\Moq.Extensions.DataReader\Moq.Extensions.DataReader.csproj" />
   </ItemGroup>
 </Project>
