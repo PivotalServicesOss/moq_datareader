@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <PivotalServicesBootstrapName>Moq.Extensions.DataReader</PivotalServicesBootstrapName>
+    <PivotalServicesBootstrapCopyright>All rights reserved.</PivotalServicesBootstrapCopyright>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GitVersionMsBuildVersion>5.6.11</GitVersionMsBuildVersion>
+    <MicrosoftAspNetVersion>5.2.7</MicrosoftAspNetVersion>
+    <MicrosoftExtensionsVersion>3.1.18</MicrosoftExtensionsVersion>
+    <TargetFrameworkGeneral>net5.0</TargetFrameworkGeneral>
+  </PropertyGroup>
+</Project>
