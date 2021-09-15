@@ -2,6 +2,7 @@
   <Import Project="..\..\versions.props" />
   <PropertyGroup>
     <TargetFramework>$(TargetFrameworkGeneral)</TargetFramework>
+    <AssemblyName>Moq.Extensions.DataReader.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
