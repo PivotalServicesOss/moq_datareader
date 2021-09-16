@@ -4,7 +4,7 @@ using System.Data;
 using System.Collections.Generic;
 using System;
 
-namespace Moq.Extensions.DataReader.Tests
+namespace MoqExtensions.DataReader.Tests
 {
     public class MockDataReaderTests
     {
