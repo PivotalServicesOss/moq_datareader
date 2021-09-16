@@ -25,10 +25,10 @@ Build | MoqExtensions.DataReader |
     mockDataTable.Columns.Add(new MockDataColumn("Column3", typeof(string), true));
 
     //Add Rows (data) - column order is important here
-    mockDataTable.Rows.Add(new MockDataRow("Row1_Column1_Value", "Row1_Column2_Value", "Row1_Column3_Value",);
-    mockDataTable.Rows.Add(new MockDataRow("Row2_Column1_Value", "Row2_Column2_Value", "Row2_Column3_Value",);
-    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value",);
-    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value",);
+    mockDataTable.Rows.Add(new MockDataRow("Row1_Column1_Value", "Row1_Column2_Value", "Row1_Column3_Value");
+    mockDataTable.Rows.Add(new MockDataRow("Row2_Column1_Value", "Row2_Column2_Value", "Row2_Column3_Value");
+    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value");
+    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value");
 ```
 
 - Create a mock datareader as below using [Moq](https://github.com/Moq/moq4/wiki/Quickstart) and setup using the extension method `SetupWithReturn`
