@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+  <Import Project="..\..\versions.props" />
+  
+  <PropertyGroup>
+    <TargetFramework>$(TargetFrameworkGeneral)</TargetFramework>
+    <RootNamespace>$(ProjectRootNamespace)</RootNamespace>
+    <AssemblyName>$(ProjectPackageId)</AssemblyName>
+    <DebugType>Embedded</DebugType>
+    <EmbedAllSources>true</EmbedAllSources>
+    <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
+    <UpdateVersionProperties>true</UpdateVersionProperties>
+    <IsPackable>true</IsPackable>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>$(ProjectPackageId)</PackageId>
+    <Title>$(ProjectPackageId)</Title>
+    <Version>1.0.0</Version>
+    <Authors>ajaganathan</Authors>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>$(ProjectCopyright)</Copyright>
+    <RepositoryUrl>https://github.com/alfusinigoj/moq_datareader.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Moq;Mock;IDataReader</PackageTags>
+    <Description>Package which helps mocking IDataReader when using Moq for mocking dependencies when writing unit tests</Description>
+    <PackageProjectUrl>https://alfusinigoj.github.io/moq_datareader</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GitVersion.MsBuild" Version="$(GitVersionMsBuildVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Moq" Version="4.16.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="readme.txt" pack="true" PackagePath="." />
+  </ItemGroup>
+
+</Project>

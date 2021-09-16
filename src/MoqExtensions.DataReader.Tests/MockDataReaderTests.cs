@@ -3,6 +3,7 @@ using FluentAssertions;
 using System.Data;
 using System.Collections.Generic;
 using System;
+using Moq;
 
 namespace MoqExtensions.DataReader.Tests
 {
