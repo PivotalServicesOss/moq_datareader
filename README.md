@@ -1,6 +1,8 @@
 ### A simple Moq extensions library that helps in mocking `IDataReader`
 
-### Kindly raise any issues at [Project Issues](https://github.com/alfusinigoj/moq_datareader/issues)
+#### For more details, please refer [project site](https://alfusinigoj.github.io/moq_datareader/)
+
+#### Kindly raise any issues at [Project Issues](https://github.com/alfusinigoj/moq_datareader/issues)
 
 Build | MoqExtensions.DataReader |
 --- | --- |
