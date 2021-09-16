@@ -1,5 +1,6 @@
 using Xunit;
 using FluentAssertions;
+using Moq;
 
 namespace MoqExtensions.DataReader.Tests
 {
