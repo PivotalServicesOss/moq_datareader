@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <ProjectRootNamespace>Moq</ProjectRootNamespace>
-    <ProjectPackageId>Moq.Extensions.DataReader</ProjectPackageId>
+    <ProjectPackageId>MoqExtensions.DataReader</ProjectPackageId>
     <ProjectCopyright>All rights reserved.</ProjectCopyright>
   </PropertyGroup>
   <PropertyGroup>

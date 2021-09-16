@@ -2,7 +2,7 @@
   <Import Project="..\..\versions.props" />
   <PropertyGroup>
     <TargetFramework>$(TargetFrameworkGeneral)</TargetFramework>
-    <AssemblyName>Moq.Extensions.DataReader.Tests</AssemblyName>
+    <AssemblyName>MoqExtensions.DataReader.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Moq.Extensions.DataReader\Moq.Extensions.DataReader.csproj" />
+    <ProjectReference Include="..\MoqExtensions.DataReader\MoqExtensions.DataReader.csproj" />
   </ItemGroup>
 </Project>

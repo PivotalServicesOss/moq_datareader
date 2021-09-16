@@ -1,7 +1,7 @@
 using Xunit;
 using FluentAssertions;
 
-namespace Moq.Extensions.DataReader.Tests
+namespace MoqExtensions.DataReader.Tests
 {
     public class MockDataColumnTests
     {

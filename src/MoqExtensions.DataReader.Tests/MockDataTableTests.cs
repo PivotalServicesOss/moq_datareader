@@ -2,7 +2,7 @@ using Xunit;
 using System.Collections.Generic;
 using FluentAssertions;
 
-namespace Moq.Extensions.DataReader.Tests
+namespace MoqExtensions.DataReader.Tests
 {
     public class MockDataTableTests
     {

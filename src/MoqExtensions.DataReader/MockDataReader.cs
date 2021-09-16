@@ -15,9 +15,6 @@ namespace Moq
 
             columns.AddRange(from column in table.Columns select column.Name);
             
-            // foreach (var (row, rowItem) in from row in table.Rows
-            //                                let rowItem = new List<Tuple<object, string, bool>>()
-            //                                select (row, rowItem))
             foreach (var row in table.Rows)
             {
                 var rowItem = new List<Tuple<object, string, bool>>();
