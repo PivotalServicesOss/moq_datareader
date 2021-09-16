@@ -47,8 +47,8 @@ Build | MoqExtensions.DataReader |
     {
         models.Add(new Model
         {
-            Column1 = reader.GetInt16(reader.GetOrdinal("Column1")),
-            Column2 = reader.GetInt32(reader.GetOrdinal("Column2")),
+            Column1 = reader.GetString(reader.GetOrdinal("Column1")),
+            Column2 = reader.GetString(reader.GetOrdinal("Column2")),
             Column3 = Convert.IsDBNull(reader.GetOrdinal("Column3")) ? null : reader.GetString(reader.GetOrdinal("Column3")),
         });
     }   
