@@ -28,7 +28,7 @@ Build | MoqExtensions.DataReader |
     mockDataTable.Rows.Add(new MockDataRow("Row1_Column1_Value", "Row1_Column2_Value", "Row1_Column3_Value");
     mockDataTable.Rows.Add(new MockDataRow("Row2_Column1_Value", "Row2_Column2_Value", "Row2_Column3_Value");
     mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value");
-    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value");
+    mockDataTable.Rows.Add(new MockDataRow("Row4_Column1_Value", "Row4_Column2_Value", "Row4_Column3_Value");
 ```
 
 - Create a mock datareader as below using [Moq](https://github.com/Moq/moq4/wiki/Quickstart) and setup using the extension method `SetupWithReturn`
@@ -56,5 +56,13 @@ Build | MoqExtensions.DataReader |
 
 ### Issues
 - Kindly raise any issues under [GitHub Issues](https://github.com/alfusinigoj/moq_datareader/issues)
+
+### Release Info
+
+#### 1.0.1
+- Added additional framework support `(net45;netstandard2.0;netstandard2.1;net5.0)`
+
+#### 1.0.0
+- Initial Release
 
 ### Contributions are welcome!

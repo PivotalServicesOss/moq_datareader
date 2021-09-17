@@ -5,9 +5,19 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C9433C1A-B88B-4F82-AC08-F723E92145FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoqExtensions.DataReader.Tests", "src\MoqExtensions.DataReader.Tests\MoqExtensions.DataReader.Tests.csproj", "{E833701F-86C8-4629-AB05-2363502BB708}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoqExtensions.DataReader.Tests", "test\MoqExtensions.DataReader.Tests\MoqExtensions.DataReader.Tests.csproj", "{E833701F-86C8-4629-AB05-2363502BB708}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoqExtensions.DataReader", "src\MoqExtensions.DataReader\MoqExtensions.DataReader.csproj", "{60BE8A17-39A9-4F2E-9E2D-9C8B314FB0D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoqExtensions.DataReader", "src\MoqExtensions.DataReader\MoqExtensions.DataReader.csproj", "{60BE8A17-39A9-4F2E-9E2D-9C8B314FB0D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution_items", "solution_items", "{9760BA81-BF40-44D3-BE0B-F66E5AF203BA}"
+	ProjectSection(SolutionItems) = preProject
+		GitVersion.yml = GitVersion.yml
+		NuGet.config = NuGet.config
+		README.md = README.md
+		versions.props = versions.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F1AD0C3F-307C-4C6A-BA2C-7638204A2AE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E833701F-86C8-4629-AB05-2363502BB708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -47,8 +54,14 @@ Global
 		{60BE8A17-39A9-4F2E-9E2D-9C8B314FB0D9}.Release|x86.ActiveCfg = Release|Any CPU
 		{60BE8A17-39A9-4F2E-9E2D-9C8B314FB0D9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E833701F-86C8-4629-AB05-2363502BB708} = {C9433C1A-B88B-4F82-AC08-F723E92145FC}
+		{E833701F-86C8-4629-AB05-2363502BB708} = {F1AD0C3F-307C-4C6A-BA2C-7638204A2AE4}
 		{60BE8A17-39A9-4F2E-9E2D-9C8B314FB0D9} = {C9433C1A-B88B-4F82-AC08-F723E92145FC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B130169-573A-4811-BC2A-1571A4D523BD}
 	EndGlobalSection
 EndGlobal
