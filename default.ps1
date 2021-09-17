@@ -90,9 +90,14 @@ task Compile -depends Restore {
 task UnitTest -depends Compile{
     Write-Host "******************* Now running unit tests *********************"
     Push-Location $base_dir
-    $test_assemblies = @((Get-ChildItem -Recurse -Filter "*Tests.dll" | Where-Object {$_.Directory -like '*test*'}).FullName) -join ' '
-    Write-Host "Executing tests on the following assemblies: $test_assemblies"
-    Start-Process -FilePath $vstest -ArgumentList $test_assemblies ,"/Parallel" -NoNewWindow -Wait
+    $test_assemblies = @((Get-ChildItem -Recurse -Filter "*Tests.dll" | Where-Object {$_.Directory -like '*test*'} | Where-Object {$_.Directory -like '*bin*'} | Where-Object {$_.Directory -notlike '*ref*'}).FullName) -join ' '
+    foreach($test_assembly in $test_assemblies.Split(" "))
+    {
+        Write-Host "Executing tests on assembly: $test_assembly"
+        exec { 
+            & $vstest $test_assembly /logger:"console;verbosity=detailed" /Settings:"$base_dir\.runsettings"
+        }
+    }
     Pop-Location
     if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
  }

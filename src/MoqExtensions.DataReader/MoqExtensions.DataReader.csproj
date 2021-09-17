@@ -2,7 +2,7 @@
   <Import Project="..\..\versions.props" />
   
   <PropertyGroup>
-    <TargetFramework>$(TargetFrameworkGeneral)</TargetFramework>
+    <TargetFrameworks>$(TargetFrameworksGeneral)</TargetFrameworks>
     <RootNamespace>$(ProjectRootNamespace)</RootNamespace>
     <AssemblyName>$(ProjectPackageId)</AssemblyName>
     <DebugType>Embedded</DebugType>
@@ -12,6 +12,7 @@
     <IsPackable>true</IsPackable>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,7 +25,7 @@
     <Copyright>$(ProjectCopyright)</Copyright>
     <RepositoryUrl>https://github.com/alfusinigoj/moq_datareader.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Moq;Mock;IDataReader</PackageTags>
+    <PackageTags>Moq;Mocking;TDD;UnitTesting;IDataReader</PackageTags>
     <Description>Package which helps mocking IDataReader when using Moq for mocking dependencies when writing unit tests</Description>
     <PackageProjectUrl>https://alfusinigoj.github.io/moq_datareader</PackageProjectUrl>
   </PropertyGroup>
