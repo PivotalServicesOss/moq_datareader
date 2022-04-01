@@ -57,12 +57,4 @@ Build | MoqExtensions.DataReader |
 ### Issues
 - Kindly raise any issues under [GitHub Issues](https://github.com/alfusinigoj/moq_datareader/issues)
 
-### Release Info
-
-#### 1.0.1
-- Added additional framework support `(net45;netstandard2.0;netstandard2.1;net5.0)`
-
-#### 1.0.0
-- Initial Release
-
 ### Contributions are welcome!
