@@ -25,10 +25,10 @@ Build | MoqExtensions.DataReader |
     mockDataTable.Columns.Add(new MockDataColumn("Column3", typeof(string), true));
 
     //Add Rows (data) - column order is important here
-    mockDataTable.Rows.Add(new MockDataRow("Row1_Column1_Value", "Row1_Column2_Value", "Row1_Column3_Value");
-    mockDataTable.Rows.Add(new MockDataRow("Row2_Column1_Value", "Row2_Column2_Value", "Row2_Column3_Value");
-    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value");
-    mockDataTable.Rows.Add(new MockDataRow("Row4_Column1_Value", "Row4_Column2_Value", "Row4_Column3_Value");
+    mockDataTable.Rows.Add(new MockDataRow("Row1_Column1_Value", "Row1_Column2_Value", "Row1_Column3_Value"));
+    mockDataTable.Rows.Add(new MockDataRow("Row2_Column1_Value", "Row2_Column2_Value", "Row2_Column3_Value"));
+    mockDataTable.Rows.Add(new MockDataRow("Row3_Column1_Value", "Row3_Column2_Value", "Row3_Column3_Value"));
+    mockDataTable.Rows.Add(new MockDataRow("Row4_Column1_Value", "Row4_Column2_Value", "Row4_Column3_Value"));
 ```
 
 - Create a mock datareader as below using [Moq](https://github.com/Moq/moq4/wiki/Quickstart) and setup using the extension method `SetupWithReturn`
@@ -37,7 +37,7 @@ Build | MoqExtensions.DataReader |
     var reader = new Mock<IDataReader>();
 
     //Setup reader to return the data from datatable
-    reader.SetupWithReturn(table);
+    reader.SetupWithReturn(mockDataTable);
 ```
 
 - You should be all set to use your mocked reader for unit testing a `Repository` or any class that uses `IDataReader`. Sample implementation given below.

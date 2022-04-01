@@ -2,7 +2,7 @@
   <Import Project="..\..\versions.props" />
   
   <PropertyGroup>
-    <TargetFrameworks>$(TargetFrameworksGeneral)</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <RootNamespace>$(ProjectRootNamespace)</RootNamespace>
     <AssemblyName>$(ProjectPackageId)</AssemblyName>
     <DebugType>Embedded</DebugType>
