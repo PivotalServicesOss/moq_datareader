@@ -6,12 +6,11 @@ properties {
   $solution_file = "$base_dir\$solution_name.sln"
   $test_dir = "$base_dir\test"
   $nuget = "nuget.exe"
-  $msbuild = Get-LatestMsbuildLocation
-  $vstest = get_vstest_executable
   $local_nuget_repo = "c:\MyLocalNugetRepo"
   $remote_nuget_repo = "https://api.nuget.org/v3/index.json"
   $remote_myget_repo = "https://www.myget.org/F/ajaganathan/api/v3/index.json"
   $date = Get-Date 
+  $dotnet_exe = get-dotnet
 }
 
 #These are aliases for other build tasks. They typically are named after the camelcase letters (rd = Rebuild Databases)
@@ -27,7 +26,6 @@ task ? -depends help
 
 task emitProperties {
   Write-Host "solution_name=$solution_name"
-  Write-Host "build_dir=$build_dir"
   Write-Host "solution_file=$solution_file"
   Write-Host "test_dir=$test_dir"
   Write-Host "publish_dir=$publish_dir"
@@ -63,7 +61,7 @@ task SetReleaseBuild {
 task Restore {
     Write-Host "******************* Now restoring the solution dependencies *********************"
     exec { 
-        & $msbuild /t:restore $solution_file /v:m /p:NuGetInteractive="true"
+        & $dotnet_exe msbuild /t:restore $solution_file /v:m /p:NuGetInteractive="true"
         if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
     }
 }
@@ -74,7 +72,7 @@ task Clean -depends Restore{
         delete_directory $publish_dir
     }
     exec { 
-        & $msbuild /t:clean /v:m /p:Configuration=$project_config $solution_file 
+        & $dotnet_exe msbuild /t:clean /v:m /p:Configuration=$project_config $solution_file 
     }
     if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
 }
@@ -82,7 +80,7 @@ task Clean -depends Restore{
 task Compile -depends Restore {
     Write-Host "******************* Now compiling the solution *********************"
     exec { 
-        & $msbuild /t:build /v:m /p:Configuration=$project_config /nologo /p:Platform="Any CPU" /nologo $solution_file 
+        & $dotnet_exe msbuild /t:build /v:m /p:Configuration=$project_config /nologo /p:Platform="Any CPU" /nologo $solution_file 
     }
     if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
 }
@@ -90,12 +88,13 @@ task Compile -depends Restore {
 task UnitTest -depends Compile{
     Write-Host "******************* Now running unit tests *********************"
     Push-Location $base_dir
-    $test_assemblies = @((Get-ChildItem -Recurse -Filter "*Tests.dll" | Where-Object {$_.Directory -like '*test*'} | Where-Object {$_.Directory -like '*bin*'} | Where-Object {$_.Directory -notlike '*ref*'}).FullName) -join ' '
-    foreach($test_assembly in $test_assemblies.Split(" "))
+    $test_projects = @((Get-ChildItem -Recurse -Filter "*Tests.csproj").FullName) -join '~'
+
+    foreach($test_project in $test_projects.Split("~"))
     {
-        Write-Host "Executing tests on assembly: $test_assembly"
-        exec { 
-            & $vstest $test_assembly /logger:"console;verbosity=detailed" /Settings:"$base_dir\.runsettings"
+        Write-Host "Executing tests on: $test_project"
+        exec {
+            & $dotnet_exe test $test_project --settings "$base_dir/.runsettings" -- xunit.parallelizeTestCollections=true
         }
     }
     Pop-Location
@@ -110,7 +109,7 @@ task UnitTest -depends Compile{
 	foreach ($project in $projects) {
 		Write-Host "Executing nuget pack on the project: $project"
 		exec { 
-            & $msbuild /t:pack /v:m $project /p:OutputPath=$publish_dir /p:Configuration=$project_config
+            & $dotnet_exe msbuild /t:pack /v:m $project /p:OutputPath=$publish_dir /p:Configuration=$project_config
             if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
         }
 	}
@@ -220,8 +219,6 @@ function global:delete_files($directory_name) {
     Get-ChildItem -Path $directory_name -Include * -File -Recurse | foreach { $_.Delete()}
 }
 
-function global:get_vstest_executable() {
-    $vstest_exe = exec { & "c:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vswhere.exe"  -latest -products * -requires Microsoft.VisualStudio.PackageGroup.TestTools.Core -property installationPath}
-    $vstest_exe = join-path $vstest_exe 'Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe'
-    return $vstest_exe
+function global:get-dotnet(){
+	return (Get-Command dotnet).Path
 }
