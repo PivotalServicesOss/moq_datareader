@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Moq;
 
-namespace MoqExtensions.DataReader.Tests
+namespace PivotalServices.MoqExtensions.DataReader.Tests
 {
     public class MockDataTableTests
     {
