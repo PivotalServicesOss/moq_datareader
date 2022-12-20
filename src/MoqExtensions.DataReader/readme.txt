@@ -3,6 +3,6 @@ Below are the developer instructions
 ============================================================================================================================================
 
 Please follow the instructions provided in the links below
-https://alfusinigoj.github.io/moq_datareader
+https://github.com/PivotalServicesOss/moq_datareader
 
 ============================================================================================================================================
