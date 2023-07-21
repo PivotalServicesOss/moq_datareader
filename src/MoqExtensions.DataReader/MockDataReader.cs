@@ -14,15 +14,15 @@ namespace Moq
             var rowIndex = 0;
 
             columns.AddRange(from column in table.Columns select column.Name);
-            
+
             foreach (var row in table.Rows)
             {
                 var rowItem = new List<Tuple<object, string, bool>>();
                 for (int columnIndex = 0; columnIndex < columns.Count; columnIndex++)
                 {
                     rowItem.Add(new Tuple<object, string, bool>(
-                        row[columnIndex], 
-                        table.Columns[columnIndex].Type.Name, 
+                        row[columnIndex],
+                        table.Columns[columnIndex].Type.Name,
                         table.Columns[columnIndex].IsNullable));
                 }
                 rows.Add(rowItem);
@@ -39,7 +39,7 @@ namespace Moq
 
         private static void SetupNextRow(Mock<IDataReader> reader, List<List<Tuple<object, string, bool>>> rows, ref int rowIndex)
         {
-            if(rowIndex >= rows.Count) return;
+            if (rowIndex >= rows.Count) return;
 
             var row = rows[rowIndex];
 
@@ -52,41 +52,44 @@ namespace Moq
                 {
                     case "int16":
                         reader.Setup(r => r.GetInt16(It.Is<int>(x => x == index))).Returns((short)column.Item1);
-                    break;
+                        break;
                     case "int32":
                         reader.Setup(r => r.GetInt32(It.Is<int>(x => x == index))).Returns((int)column.Item1);
-                    break;
+                        break;
                     case "int64":
                         reader.Setup(r => r.GetInt64(It.Is<int>(x => x == index))).Returns((long)column.Item1);
-                    break;
+                        break;
                     case "decimal":
                         reader.Setup(r => r.GetDecimal(It.Is<int>(x => x == index))).Returns((decimal)column.Item1);
-                    break;
+                        break;
                     case "double":
                         reader.Setup(r => r.GetDouble(It.Is<int>(x => x == index))).Returns((double)column.Item1);
-                    break;
+                        break;
                     case "single":
                         reader.Setup(r => r.GetFloat(It.Is<int>(x => x == index))).Returns((float)column.Item1);
-                    break;
+                        break;
                     case "bool":
                     case "boolean":
                         reader.Setup(r => r.GetBoolean(It.Is<int>(x => x == index))).Returns((bool)column.Item1);
-                    break;
+                        break;
                     case "guid":
                         reader.Setup(r => r.GetGuid(It.Is<int>(x => x == index))).Returns((Guid)column.Item1);
-                    break;
+                        break;
                     case "string":
                         reader.Setup(r => r.GetString(It.Is<int>(x => x == index))).Returns((string)column.Item1);
-                    break;
+                        break;
                     case "datetime":
                         reader.Setup(r => r.GetDateTime(It.Is<int>(x => x == index))).Returns((DateTime)column.Item1);
-                    break;
+                        break;
                     case "char":
                         reader.Setup(r => r.GetChar(It.Is<int>(x => x == index))).Returns((char)column.Item1);
-                    break;
+                        break;
                     case "byte":
                         reader.Setup(r => r.GetByte(It.Is<int>(x => x == index))).Returns((byte)column.Item1);
-                    break;
+                        break;
+                    case "nullable`1":
+                        throw new ArgumentNullException(@"Nullable value detected in not nullable column, please configure the MockColumn as nullable with the third parameter.
+Example: new MockDataColumn(""Nullable_Column"", typeof(short), true);");
                     default:
                         throw new NotImplementedException(column.Item2.ToLower());
                 }
